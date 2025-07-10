@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository Health Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading repository data...</p>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fab fa-github"></i> RepoDoc</h2>
+            <button class="sidebar-toggle" id="sidebar-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul>
+                <li>
+                    <a href="#" class="nav-link active" data-section="stale-branches">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Stale Branches</span>
+                        <span class="badge" id="stale-count">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="open-prs">
+                        <i class="fas fa-code-pull-request"></i>
+                        <span>Open PRs</span>
+                        <span class="badge" id="pr-count">0</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="repo-info">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Repository Info</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link" data-section="activity-chart">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Activity Chart</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="repo-title">Repository Health Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <button class="btn btn-primary" id="refresh-btn">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+        </header>
+
+        <!-- Stale Branches Section -->
+        <section id="stale-branches-section" class="content-section active">
+            <div class="section-header">
+                <h2><i class="fas fa-code-branch"></i> Stale Branches</h2>
+                <div class="filters">
+                    <label>Filter by days inactive:</label>
+                    <select id="branch-filter">
+                        <option value="all">All branches</option>
+                        <option value="1">1+ days</option>
+                        <option value="7">7+ days</option>
+                        <option value="30">30+ days</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table" id="branches-table">
+                        <thead>
+                            <tr>
+                                <th>Branch</th>
+                                <th>Author</th>
+                                <th>Last Commit</th>
+                                <th>Message</th>
+                                <th>Days Inactive</th>
+                                <th>Commits</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="branches-tbody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Open PRs Section -->
+        <section id="open-prs-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-code-pull-request"></i> Open Pull Requests</h2>
+                <div class="filters">
+                    <label>Filter by age:</label>
+                    <select id="pr-filter">
+                        <option value="all">All PRs</option>
+                        <option value="1">1+ days</option>
+                        <option value="3">3+ days</option>
+                        <option value="7">7+ days</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="table-container">
+                    <table class="data-table" id="prs-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Number</th>
+                                <th>Author</th>
+                                <th>Created</th>
+                                <th>Days Active</th>
+                                <th>State</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prs-tbody">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repository Info Section -->
+        <section id="repo-info-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-info-circle"></i> Repository Information</h2>
+            </div>
+            
+            <div class="repo-info-grid" id="repo-info-grid">
+                <!-- Dynamic content -->
+            </div>
+        </section>
+
+        <!-- Activity Chart Section -->
+        <section id="activity-chart-section" class="content-section">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-line"></i> Activity Chart</h2>
+            </div>
+            
+            <div class="card">
+                <div class="chart-container">
+                    <canvas id="activity-chart" width="800" height="400"></canvas>
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-line"></i>
+                        <p>Chart.js integration placeholder</p>
+                        <small>Connect your Chart.js library here</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

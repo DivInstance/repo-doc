@@ -1,0 +1,13 @@
+name: Automated github actions
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  automated-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test-run
+        run: echo "Test automated run at 8:30 am IST."
