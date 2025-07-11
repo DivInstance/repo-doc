@@ -6,9 +6,9 @@ import { GitPullRequest, ExternalLink, X, Filter, User } from "lucide-react"
 interface PR {
   title: string
   number: number
-  author: string
+  creater: string
   created_at: string
-  days_active: string
+  days_active: number
   state: string
   reviewers: string[]
 }
@@ -32,7 +32,7 @@ export default function OpenPRs({ prs, repoInfo }: OpenPRsProps) {
 
   const filteredPRs = prs.filter((pr) => {
     if (filter === "all") return true
-    const days = Number.parseInt(pr.days_active.split(" ")[0])
+    const days = pr.days_active
     return days >= Number.parseInt(filter)
   })
 
@@ -62,8 +62,8 @@ export default function OpenPRs({ prs, repoInfo }: OpenPRsProps) {
     }
   }
 
-  const getAgeBadgeColor = (daysActive: string) => {
-    const days = Number.parseInt(daysActive.split(" ")[0])
+  const getAgeBadgeColor = (daysActive: number) => {
+    const days = daysActive
     if (days >= 7) return "badge-destructive"
     if (days >= 3) return "badge-secondary"
     return "badge-outline"
@@ -117,7 +117,7 @@ export default function OpenPRs({ prs, repoInfo }: OpenPRsProps) {
             <div className="ml-4">
               <p className="text-sm font-medium text-gray-500">Stale (7+ days)</p>
               <p className="text-2xl font-semibold text-gray-900">
-                {prs.filter((pr) => Number.parseInt(pr.days_active.split(" ")[0]) >= 7).length}
+                {prs.filter((pr) => (pr.days_active) >= 7).length}
               </p>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function OpenPRs({ prs, repoInfo }: OpenPRsProps) {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">#{pr.number}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pr.author}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{pr.creater}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(pr.created_at)}</td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`badge ${getAgeBadgeColor(pr.days_active)}`}>{pr.days_active}</span>

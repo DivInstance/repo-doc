@@ -9,11 +9,14 @@ interface RepoInfoProps {
     description: string
     created_at: string
     updated_at: string
+    pushed_at: string
     language: string
     default_branch: string
     visibility: string
     forks_count: number
     open_issues_count: number
+    license: string
+    contributors: any[]
   }
 }
 
@@ -54,13 +57,13 @@ export default function RepoInfo({ repoInfo }: RepoInfoProps) {
             <div className="flex items-center space-x-4">
               <div className="flex items-center">
                 {(() => {
-                  const VisibilityIcon = getVisibilityIcon(repoInfo.visibility)
+                  const VisibilityIcon = getVisibilityIcon(repoInfo.owner)
                   return (
                     <div
                       className={`flex items-center px-2 py-1 rounded-full text-sm font-medium ${getVisibilityColor(repoInfo.visibility)}`}
                     >
                       <VisibilityIcon className="w-4 h-4 mr-1" />
-                      {repoInfo.visibility}
+                      {repoInfo.owner}
                     </div>
                   )
                 })()}
@@ -150,8 +153,16 @@ export default function RepoInfo({ repoInfo }: RepoInfoProps) {
               <span className="text-sm text-gray-900">{repoInfo.owner}</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
+              <span className="text-sm font-medium text-gray-500">Contributors</span>
+              <span className="text-sm text-gray-900">{repoInfo.contributors && repoInfo.contributors.length>0 ? repoInfo.contributors.join(", "): "Not specified"}</span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b border-gray-100">
               <span className="text-sm font-medium text-gray-500">Primary Language</span>
               <span className="text-sm text-gray-900">{repoInfo.language || "Not specified"}</span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b border-gray-100">
+              <span className="text-sm font-medium text-gray-500">License</span>
+              <span className="text-sm text-gray-900">{repoInfo.license || "None"}</span>
             </div>
             <div className="flex justify-between items-center py-2">
               <span className="text-sm font-medium text-gray-500">Default Branch</span>
@@ -176,6 +187,10 @@ export default function RepoInfo({ repoInfo }: RepoInfoProps) {
             <div className="flex justify-between items-center py-2 border-b border-gray-100">
               <span className="text-sm font-medium text-gray-500">Last Updated</span>
               <span className="text-sm text-gray-900">{formatDate(repoInfo.updated_at)}</span>
+            </div>
+            <div className="flex justify-between items-center py-2 border-b border-gray-100">
+              <span className="text-sm font-medium text-gray-500">Last Pushed</span>
+              <span className="text-sm text-gray-900">{formatDate(repoInfo.pushed_at)}</span>
             </div>
             <div className="flex justify-between items-center py-2">
               <span className="text-sm font-medium text-gray-500">Days Since Creation</span>

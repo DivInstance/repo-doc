@@ -1,39 +1,97 @@
 {
     "stale_branches": [
         {
+            "branch": "feature-001-routing",
+            "author": "Divyaranjan Sahoo",
+            "date": "2025-07-10",
+            "message": "Test feature",
+            "days_inactive": "1 days",
+            "last_commit": 26.0,
+            "commits": "55 commits"
+        },
+        {
             "branch": "main",
             "author": "Divyaranjan Sahoo",
             "date": "2024-11-15",
             "message": "Stable Version update",
-            "days_inactive": "236 days",
-            "last_commit": 5678.0,
-            "commits": "55 commits",
-            "commits_by_month": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]"
+            "days_inactive": "238 days",
+            "last_commit": 5727.0,
+            "commits": "55 commits"
         },
         {
             "branch": "master",
             "author": "Divyaranjan Sahoo",
             "date": "2024-11-15",
             "message": "Beta Update",
-            "days_inactive": "236 days",
-            "last_commit": 5674.0,
-            "commits": "55 commits",
-            "commits_by_month": "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0]"
+            "days_inactive": "238 days",
+            "last_commit": 5724.0,
+            "commits": "55 commits"
         }
     ],
-    "open_prs": [],
-    "repo_info": [
+    "open_prs": [
         {
-            "name": "Health-Wellness-App-Rejected",
-            "owner": "DivInstance",
-            "description": "Health Monitoring and Digital Well-being App using MERN stack and React Native as our Major Project.",
-            "created_at": "2024-08-06T16:12:37Z",
-            "updated_at": "2025-06-18T16:58:20Z",
-            "language": "JavaScript",
-            "default_branch": "main",
-            "visibility": "public",
-            "forks_count": 0,
-            "open_issues_count": 0
+            "title": "Test feature",
+            "number": 4,
+            "created_at": "2025-07-10",
+            "days_active": 1,
+            "creater": "DivInstance",
+            "state": "open",
+            "url": "https://github.com/DivInstance/Health-Wellness-App-Rejected/pull/4",
+            "reviewers": []
         }
-    ]
+    ],
+    "repo_info": [
+        [
+            {
+                "name": "Health-Wellness-App-Rejected",
+                "owner": "DivInstance",
+                "description": "Health Monitoring and Digital Well-being App using MERN stack and React Native as our Major Project.",
+                "created_at": "2024-08-06T16:12:37Z",
+                "updated_at": "2025-06-18T16:58:20Z",
+                "pushed_at": "2025-07-10T18:58:49Z",
+                "language": "JavaScript",
+                "default_branch": "main",
+                "visibility": "public",
+                "forks_count": 0,
+                "open_issues_count": 1,
+                "license": null,
+                "contributors": [
+                    "DivInstance",
+                    "nsdv-frctrd"
+                ]
+            }
+        ]
+    ],
+    "monthly_activity": {
+        "commits": {
+            "2025-02": 0,
+            "2025-03": 0,
+            "2025-04": 0,
+            "2025-05": 0,
+            "2025-06": 0,
+            "2025-07": 0
+        },
+        "branches": {
+            "2025-02": 0,
+            "2025-03": 0,
+            "2025-04": 0,
+            "2025-05": 0,
+            "2025-06": 0,
+            "2025-07": 1
+        },
+        "prs": {
+            "2025-02": 0,
+            "2025-03": 0,
+            "2025-04": 0,
+            "2025-05": 0,
+            "2025-06": 0,
+            "2025-07": 1
+        }
+    },
+    "analytics": {
+        "average_commits_per_month": 1.5,
+        "most_active_day": "Tuesday",
+        "peak_hours": "7\u20139 PM",
+        "repo_health_score": 41.25
+    }
 }

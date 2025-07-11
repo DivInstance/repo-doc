@@ -12,6 +12,17 @@ interface DashboardProps {
     stale_branches: any[]
     open_prs: any[]
     repo_info: any[]
+    monthly_activity: {
+      commits: Record<string, number>
+      branches: Record<string, number>
+      prs: Record<string, number>
+    }
+   analytics: {
+      average_commits_per_month: number
+      most_active_day: string
+      peak_hours: number
+      repo_health_score: number
+    }
   }
 }
 
@@ -60,7 +71,11 @@ export default function Dashboard({ data }: DashboardProps) {
     },
   ]
 
-  const repoInfo = data.repo_info[0]
+  const repoInfo = data.repo_info && data.repo_info.length > 0 ? data.repo_info[0][0] : null
+  
+  // Repository URL
+  const repoUrl = `https://github.com/${repoInfo.owner}/${repoInfo.name}`
+
 
   const renderContent = () => {
     switch (activeSection) {
@@ -169,7 +184,7 @@ export default function Dashboard({ data }: DashboardProps) {
               </button>
               <div className="ml-2 lg:ml-0">
                 <h1 className="text-2xl font-bold text-gray-900">
-                  {repoInfo ? `${repoInfo.owner}/${repoInfo.name}` : "Repository Health Dashboard"}
+                  <a href={repoUrl} target="_blank">{repoInfo ? `${repoInfo.owner}/${repoInfo.name}` : "Repository Health Dashboard"}</a>
                 </h1>
                 <p className="text-sm text-gray-500 mt-1">Monitor your repository health and analytics</p>
               </div>

@@ -8,6 +8,17 @@ interface ActivityChartProps {
     stale_branches: any[]
     open_prs: any[]
     repo_info: any[]
+    monthly_activity: {
+      commits: Record<string, number>
+      branches: Record<string, number>
+      prs: Record<string, number>
+    }
+   analytics: {
+      average_commits_per_month: number
+      most_active_day: string
+      peak_hours: number
+      repo_health_score: number
+    }
   }
 }
 
@@ -29,9 +40,10 @@ export default function ActivityChart({ data }: ActivityChartProps) {
             last6Months.push(months[monthIndex])
           }
 
-          const commitData = [45, 62, 38, 71, 55, 48] 
-          const branchData = data.stale_branches.length > 0 ? [8, 12, 6, 15, 9, 11] : [0, 0, 0, 0, 0, 0]
-          const prData = data.open_prs.length > 0 ? [5, 8, 3, 12, 7, 6] : [0, 0, 0, 0, 0, 0]
+          const monthKeys = Object.keys(data.monthly_activity.commits).sort()
+          const commitData = monthKeys.map(month => data.monthly_activity.commits[month])
+          const branchData = monthKeys.map(month => data.monthly_activity.branches[month])
+          const prData = monthKeys.map(month => data.monthly_activity.prs[month])
 
           return { months: last6Months, commitData, branchData, prData }
         }
@@ -143,12 +155,14 @@ export default function ActivityChart({ data }: ActivityChartProps) {
   }, [data])
 
   // Calculate insights
+  const { average_commits_per_month, most_active_day, peak_hours, repo_health_score } = data.analytics
+
   const totalBranches = data.stale_branches.length
   const totalPRs = data.open_prs.length
   const staleBranches = data.stale_branches.filter(
     (branch) => Number.parseInt(branch.days_inactive.split(" ")[0]) >= 30,
   ).length
-  const oldPRs = data.open_prs.filter((pr) => Number.parseInt(pr.days_active.split(" ")[0]) >= 7).length
+  const oldPRs = data.open_prs.filter((pr) => pr.days_active >= 7).length
 
   const insights = [
     {
@@ -188,6 +202,21 @@ export default function ActivityChart({ data }: ActivityChartProps) {
       bgColor: oldPRs > 0 ? "bg-red-50" : "bg-green-50",
     },
   ]
+
+  //Health color
+      const getHealthColor = (score:number):string =>{
+        if(score<30) return "text-red-500"
+        if(score<60) return "text-orange-400"
+        return "text-green-500"
+      }
+
+  //Health Bar Color
+  const getBarColor = (score: number): string => {
+    if (score < 30) return "bg-red-500"
+    if (score < 60) return "bg-orange-400"
+    return "bg-green-500"
+  }
+
 
   return (
     <div className="space-y-6">
@@ -257,15 +286,15 @@ export default function ActivityChart({ data }: ActivityChartProps) {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600">Average commits/month</span>
-              <span className="font-semibold text-gray-900">52</span>
+              <span className="font-semibold text-gray-900">{average_commits_per_month}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600">Most active day</span>
-              <span className="font-semibold text-gray-900">Tuesday</span>
+              <span className="font-semibold text-gray-900">{most_active_day}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600">Peak hours</span>
-              <span className="font-semibold text-gray-900">2-4 PM</span>
+              <span className="font-semibold text-gray-900">{peak_hours}</span>
             </div>
           </div>
         </div>
@@ -278,12 +307,15 @@ export default function ActivityChart({ data }: ActivityChartProps) {
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm text-gray-600">Overall Score</span>
-              <span className="font-semibold text-green-600">85/100</span>
+              <span className="font-semibold"><span className={`${getHealthColor(repo_health_score)}`}>{repo_health_score}</span>
+              <span className="text-green-500">/100</span></span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
-              <div className="bg-green-500 h-2 rounded-full" style={{ width: "85%" }}></div>
+              <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className={`h-2 rounded-full ${getBarColor(repo_health_score)}`} style={{ width: `${repo_health_score}%` }}></div>
             </div>
-            <div className="text-xs text-gray-500">Based on commit frequency, branch management, and PR velocity</div>
+            </div>
+            <div className="text-xs text-gray-500">Based on commit frequency, branch management, PR velocity, Issue responsiveness and Contributors diversity score.</div>
           </div>
         </div>
       </div>
