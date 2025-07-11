@@ -23,4 +23,4 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run automation script
-        run: python .workflows/automation/script.py
+        run: python .github/automation/script.py
