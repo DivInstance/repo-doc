@@ -141,74 +141,7 @@ npm run lint # Run ESLint
 npm run type-check # Run TypeScript checks
 \`\`\`
 
-## 📂 Project Structure
-
-\`\`\`
-github-health-dashboard/
-├── app/ # Next.js App Router
-│ ├── globals.css # Global styles and Tailwind imports
-│ ├── layout.tsx # Root layout component
-│ └── page.tsx # Home page (main dashboard)
-├── components/ # React components
-│ ├── Dashboard.tsx # Main dashboard container
-│ ├── StaleBranches.tsx # Stale branches section
-│ ├── OpenPRs.tsx # Pull requests management
-│ ├── RepoInfo.tsx # Repository information
-│ └── ActivityChart.tsx # Charts and analytics
-├── lib/ # Utility functions
-│ ├── utils.ts # Helper functions
-│ └── types.ts # TypeScript type definitions
-├── public/ # Static assets
-│ └── images/ # Image assets
-├── data.json # Repository data source
-├── tailwind.config.js # Tailwind CSS configuration
-├── next.config.js # Next.js configuration
-├── package.json # Dependencies and scripts
-└── README.md # Project documentation
-\`\`\`
-
 ## ⚙️ Configuration
-
-### Data Structure
-
-The dashboard expects a \`data.json\` file with the following structure:
-
-\`\`\`json
-{
-"stale_branches": [
-{
-"branch": "feature/user-auth",
-"author": "John Doe",
-"date": "2024-11-15",
-"message": "Add authentication system",
-"days_inactive": "8 days",
-"commits": "12 commits"
-}
-],
-"open_prs": [
-{
-"title": "Fix responsive design issues",
-"number": 43,
-"author": "jane.smith",
-"created_at": "2024-12-03T14:20:00Z",
-"days_active": "6 days",
-"state": "open",
-"reviewers": ["john.doe"]
-}
-],
-"repo_info": [
-{
-"name": "my-awesome-repo",
-"owner": "username",
-"description": "Repository description",
-"language": "JavaScript",
-"visibility": "public",
-"forks_count": 15,
-"open_issues_count": 3
-}
-]
-}
-\`\`\`
 
 ### Environment Variables
 
@@ -221,12 +154,12 @@ Create a \`.env.local\` file for configuration:
 GITHUB_TOKEN=your_github_personal_access_token_here
 GITHUB_REPOSITORY=username/repository-name
 
-# GitHub API (Optional - for live integration)
+### GitHub API (Optional - for live integration)
 
 GITHUB_OWNER=your_github_username
 GITHUB_REPO=your_repository_name
 
-# Email Configuration (Optional - for automated reports)
+### Email Configuration (Optional - for automated reports)
 
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
@@ -234,12 +167,12 @@ SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
 RECIPIENT_EMAIL=recipient@example.com
 
-# Application Settings
+### Application Settings
 
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 DASHBOARD_URL=https://your-dashboard-url.vercel.app
 
-# Database Configuration (Optional - for future use)
+### Database Configuration (Optional - for future use)
 
 DATABASE_URL=postgresql://username:password@localhost:5432/github_health
 MONGODB_URI=mongodb://localhost:27017/github-health-dashboard
