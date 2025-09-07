@@ -24,3 +24,20 @@ jobs:
 
       - name: Run automation script
         run: python .github/automation/script.py
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"   
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Build dashboard
+        run: npm run build
+
+      - name: Upload build as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dashboard-build
+          path: build/   
