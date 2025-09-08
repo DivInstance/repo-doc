@@ -4,9 +4,6 @@ A comprehensive **repository health analytics dashboard** built with Next.js 15 
 
 ![Dashboard Preview]([https://via.placeholder.com/800x400/1f2937/ffffff?text=GitHub+Repository+Health+Dashboard](https://repodoc.netlify.app/))
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2c376ce0-1d9d-4765-879e-6cb6c9879b1b/deploy-status)](https://app.netlify.com/projects/repodoc/deploys)
-
-
 
 ## 📋 Table of Contents
 
@@ -14,11 +11,9 @@ A comprehensive **repository health analytics dashboard** built with Next.js 15 
 - [Features](#-features)
 - [Tech Stack](#️-tech-stack)
 - [Getting Started](#-getting-started)
-- [Project Structure](#-project-structure)
 - [Configuration](#-configuration)
 - [Automation & Scheduling](#-automation--scheduling)
 - [Usage](#-usage)
-- [API Integration](#-api-integration)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [Future Roadmap](#-future-roadmap)
@@ -52,18 +47,6 @@ The **GitHub Repository Health Dashboard** is an automated analytics platform th
 - **Status Filtering**: Sort by branch status, PR state, and activity levels
 - **Search Functionality**: Quick search across branches and pull requests
 
-### 📧 Automated Reporting
-
-- **Email Summaries**: Periodic health reports sent to stakeholders
-- **Alert System**: Notifications for stale branches and aging pull requests
-- **Custom Scheduling**: Configurable report frequency and recipients
-
-### 🎨 User Experience
-
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Interactive Elements**: Hover effects, smooth transitions, and animations
-- **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
-- **Dark/Light Mode**: Theme switching capability (coming soon)
 
 ## 🛠️ Tech Stack
 
@@ -80,12 +63,6 @@ The **GitHub Repository Health Dashboard** is an automated analytics platform th
 - **JSON Data Source** - Flexible data structure for repository metrics
 - **Server Actions** - Next.js server-side data processing
 
-### UI Components
-
-- **Custom Design System** - Consistent component library
-- **Responsive Tables** - Mobile-optimized data display
-- **Interactive Cards** - Modern card-based layouts
-- **Dynamic Badges** - Status indicators and metrics
 
 ## 🚀 Getting Started
 
@@ -98,100 +75,64 @@ The **GitHub Repository Health Dashboard** is an automated analytics platform th
 ### Installation
 
 1. **Clone the repository**
-   \`\`\`bash
-   git clone https://github.com/yourusername/github-health-dashboard.git
+
+   ```bash
+   git clone https://github.com/DivInstance/github-health-dashboard.git
    cd github-health-dashboard
-   \`\`\`
+   ```
 
 2. **Install dependencies**
-   \`\`\`bash
+
+   ```bash
    npm install
+   ```
 
-   # or
+   ##### or
 
+   ```bash
    yarn install
-   \`\`\`
+   ```
 
-3. **Set up data source**
-   \`\`\`bash
-
-   # Place your data.json file in the root directory
-
-   cp data.example.json data.json
-   \`\`\`
+3. **Run python script file**
+   From the root project directory 
+   
+   ```bash
+   python .github/automation/script.py
+   ```
 
 4. **Start development server**
-   \`\`\`bash
+
+   ```bash
    npm run dev
-
-   # or
-
-   yarn dev
-   \`\`\`
+   ```
 
 5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Quick Start Commands
 
-\`\`\`bash
-
+```bash
 # Development
-
 npm run dev # Start development server
 npm run build # Build for production
 npm run start # Start production server
 npm run lint # Run ESLint
-npm run type-check # Run TypeScript checks
-\`\`\`
+npm run typecheck # Run TypeScript checks
+```
 
 ## ⚙️ Configuration
 
 ### Environment Variables
 
-Create a \`.env.local\` file for configuration:
+Create a `.env` file for configuration:
 
-\`\`\`env
+```env
 
 # GitHub Configuration (Required)
 
-GITHUB_TOKEN=your_github_personal_access_token_here
-GITHUB_REPOSITORY=username/repository-name
+GITHUB_TOKEN=your_github_personal_access_token_here  #Personal Access Token for GitHub API access
+GITHUB_REPOSITORY=username/repository-name           #Repository to monitor in format `owner/repo-name`
 
-### GitHub API (Optional - for live integration)
-
-GITHUB_OWNER=your_github_username
-GITHUB_REPO=your_repository_name
-
-### Email Configuration (Optional - for automated reports)
-
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your_email@gmail.com
-SMTP_PASS=your_app_password
-RECIPIENT_EMAIL=recipient@example.com
-
-### Application Settings
-
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-DASHBOARD_URL=https://your-dashboard-url.vercel.app
-
-### Database Configuration (Optional - for future use)
-
-DATABASE_URL=postgresql://username:password@localhost:5432/github_health
-MONGODB_URI=mongodb://localhost:27017/github-health-dashboard
-\`\`\`
-
-**Required Environment Variables:**
-
-- `GITHUB_TOKEN`: Personal Access Token for GitHub API access
-- `GITHUB_REPOSITORY`: Repository in format `owner/repo-name`
-
-**Optional Environment Variables:**
-
-- Email settings for automated reports
-- Database URLs for persistent storage
-- Application URLs for deployment
 
 ## 🤖 Automation & Scheduling
 
@@ -203,21 +144,11 @@ The project includes automated data collection and report generation:
 
 **Features:**
 
-- **Daily Reports**: Automatically runs at 9 AM UTC daily
-- **Manual Trigger**: Can be triggered manually from GitHub Actions
-- **Email Notifications**: Sends health summaries via email
-- **Data Updates**: Commits updated health data to repository
-- **Failure Alerts**: Notifies on automation failures
-
-**Setup:**
-
-1. Add required secrets to your GitHub repository:
-
-   - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`
-   - `RECIPIENT_EMAIL` (optional, defaults to SMTP_USER)
-
-2. Set repository variables:
-   - `DASHBOARD_URL`: Your deployed dashboard URL
+- [x] **Daily Reports**: Automatically runs at 9 AM UTC daily
+- [x] **Manual Trigger**: Can be triggered manually from GitHub Actions
+- [ ] **Email Notifications**: Sends health summaries via email
+- [ ] **Data Updates**: Commits updated health data to repository
+- [ ] **Failure Alerts**: Notifies on automation failures
 
 ### Python Automation Script
 
@@ -232,9 +163,9 @@ The project includes automated data collection and report generation:
 - Saves data in JSON format for dashboard
 
 **Manual Execution:**
-\`\`\`bash
+```bash
 python .github/automation/script.py
-\`\`\`
+```
 
 ## 📖 Usage
 
@@ -258,53 +189,12 @@ python .github/automation/script.py
 - **View PRs**: Open pull requests in GitHub
 - **Export Data**: Download reports in CSV format (coming soon)
 
-## 🔌 API Integration
-
-### GitHub API Setup (Optional)
-
-For live data integration, configure GitHub API access:
-
-\`\`\`javascript
-// lib/github.ts
-export async function fetchRepositoryData(owner: string, repo: string) {
-const response = await fetch(\`https://api.github.com/repos/\${owner}/\${repo}\`, {
-headers: {
-'Authorization': \`token \${process.env.GITHUB_TOKEN}\`,
-'Accept': 'application/vnd.github.v3+json'
-}
-});
-
-return response.json();
-}
-\`\`\`
-
-### Email Integration (Optional)
-
-Set up automated email reports:
-
-\`\`\`javascript
-// lib/email.ts
-import nodemailer from 'nodemailer';
-
-export async function sendHealthReport(data: RepositoryData) {
-const transporter = nodemailer.createTransporter({
-host: process.env.SMTP_HOST,
-port: parseInt(process.env.SMTP_PORT || '587'),
-auth: {
-user: process.env.SMTP_USER,
-pass: process.env.SMTP_PASS
-}
-});
-
-// Email logic here
-}
-\`\`\`
 
 ## 🚀 Deployment
 
 ### Vercel
 
-\`\`\`bash
+```bash
 
 # Install Vercel CLI
 
@@ -313,11 +203,11 @@ npm i -g vercel
 # Deploy to Vercel
 
 vercel --prod
-\`\`\`
+```
 
 ### Manual Deployment
 
-\`\`\`bash
+```bash
 
 # Build the application
 
@@ -326,25 +216,18 @@ npm run build
 # Start production server
 
 npm start
-\`\`\`
+```
 
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these steps:
 
 1. **Fork the repository**
-2. **Create a feature branch**: \`git checkout -b feature/amazing-feature\`
-3. **Commit changes**: \`git commit -m 'Add amazing feature'\`
-4. **Push to branch**: \`git push origin feature/amazing-feature\`
+2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
+3. **Commit changes**: `git commit -m 'Add amazing feature'`
+4. **Push to branch**: `git push origin feature/amazing-feature`
 5. **Open a Pull Request**
 
-### Development Guidelines
-
-- Follow TypeScript best practices
-- Use Tailwind CSS for styling
-- Write meaningful commit messages
-- Add tests for new features
-- Update documentation as needed
 
 ## 🗺️ Future Roadmap
 
@@ -404,3 +287,42 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 [Report Bug](https://github.com/yourusername/github-health-dashboard/issues) • [Request Feature](https://github.com/yourusername/github-health-dashboard/issues) • [Documentation](https://github.com/yourusername/github-health-dashboard/wiki)
 
 </div>
+
+
+<!--### 📧 Automated Reporting
+
+- **Email Summaries**: Periodic health reports sent to stakeholders
+- **Alert System**: Notifications for stale branches and aging pull requests
+- **Custom Scheduling**: Configurable report frequency and recipients
+
+### 🎨 User Experience
+
+- **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Interactive Elements**: Hover effects, smooth transitions, and animations
+- **Accessibility**: WCAG compliant with proper ARIA labels and keyboard navigation
+- **Dark/Light Mode**: Theme switching capability (coming soon)
+
+
+### GitHub API (Optional - for live integration)
+GITHUB_OWNER=your_github_username
+GITHUB_REPO=your_repository_name
+```
+
+### Email Configuration (Optional - for automated reports)
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+RECIPIENT_EMAIL=recipient@example.com
+
+### Application Settings
+
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+DASHBOARD_URL=https://your-dashboard-url.vercel.app
+
+### Database Configuration (Optional - for future use)
+
+DATABASE_URL=postgresql://username:password@localhost:5432/github_health
+MONGODB_URI=mongodb://localhost:27017/github-health-dashboard
+-->
