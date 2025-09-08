@@ -13,7 +13,6 @@ A comprehensive **repository health analytics dashboard** built with Next.js 15 
 - [Getting Started](#-getting-started)
 - [Configuration](#-configuration)
 - [Automation & Scheduling](#-automation--scheduling)
-- [Usage](#-usage)
 - [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [Future Roadmap](#-future-roadmap)
@@ -167,28 +166,6 @@ The project includes automated data collection and report generation:
 ```bash
 python .github/automation/script.py
 ```
-
-## 📖 Usage
-
-### Dashboard Navigation
-
-- **Stale Branches**: Monitor inactive branches and take cleanup actions
-- **Open PRs**: Track pull request status and review progress
-- **Repository Info**: View comprehensive repository statistics
-- **Activity Chart**: Analyze commit patterns and development trends
-
-### Filtering Options
-
-- **Time-based Filters**: 1 day, 7 days, 30+ days for branches and PRs
-- **Status Filters**: Open, closed, merged states for pull requests
-- **Search**: Quick search across all repository data
-
-### Actions Available
-
-- **Compare Branches**: Direct links to GitHub compare views
-- **Delete Branches**: Mark branches for cleanup (requires API integration)
-- **View PRs**: Open pull requests in GitHub
-- **Export Data**: Download reports in CSV format (coming soon)
 
 
 ## 🚀 Deployment
