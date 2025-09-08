@@ -132,7 +132,7 @@ Create a `.env` file for configuration:
 
 GITHUB_TOKEN=your_github_personal_access_token_here  #Personal Access Token for GitHub API access
 GITHUB_REPOSITORY=username/repository-name           #Repository to monitor in format `owner/repo-name`
-
+```
 
 ## 🤖 Automation & Scheduling
 
@@ -163,6 +163,7 @@ The project includes automated data collection and report generation:
 - Saves data in JSON format for dashboard
 
 **Manual Execution:**
+
 ```bash
 python .github/automation/script.py
 ```
