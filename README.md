@@ -2,7 +2,7 @@
 
 A comprehensive **repository health analytics dashboard** built with Next.js 15 that helps developers and teams monitor GitHub repository health with automated insights, visual analytics, and intelligent alerts.
 
-![Dashboard Preview]([https://via.placeholder.com/800x400/1f2937/ffffff?text=GitHub+Repository+Health+Dashboard](https://repodoc.netlify.app/))
+![Dashboard Preview]([https://via.placeholder.com/800x400/1f2937/ffffff?text=GitHub+Repository+Health+Dashboard](https://repo-doc.onrender.com/))
 
 
 ## 📋 Table of Contents
