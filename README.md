@@ -4,7 +4,7 @@ A comprehensive **repository health analytics dashboard** built with Next.js 15 
 
 [![Dashboard Preview](./assets/preview.png)](https://repo-doc.onrender.com/)
 
-##### Live Demo
+#### Live Demo
 
 Experience the fully deployed **Repo Doc Dashboard**, a sample project dashboard showcasing metrics, reports, and insights from the project. 
 📈 [Open Dashboard](https://repo-doc.onrender.com/)
