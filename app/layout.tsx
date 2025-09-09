@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "GitHub Repository Health Dashboard",
+  icons: {icon:'/repodoc.ico'},
   description: "Monitor your repository health with stale branches, open PRs, and detailed analytics",
   generator: "Divyaranjan Sahoo",
 }
