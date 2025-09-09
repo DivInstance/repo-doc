@@ -105,7 +105,13 @@ The **GitHub Repository Health Dashboard** is an automated analytics platform th
    npm run dev
    ```
 
-5. **Open your browser**
+5. **Run Fastapi App**
+   
+   ```bash
+   uvicorn app:app --reload 
+   ```
+
+6. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ### Quick Start Commands
