@@ -2,7 +2,7 @@
 
 A comprehensive **repository health analytics dashboard** built with Next.js 15 that helps developers and teams monitor GitHub repository health with automated insights, visual analytics, and intelligent alerts.
 
-![Dashboard Preview]([https://via.placeholder.com/800x400/1f2937/ffffff?text=GitHub+Repository+Health+Dashboard](https://repo-doc.onrender.com/))
+[![Dashboard Preview](./assets/preview.png)](https://repo-doc.onrender.com/)
 
 
 ## 📋 Table of Contents
@@ -53,6 +53,7 @@ The **GitHub Repository Health Dashboard** is an automated analytics platform th
 
 - **[Next.js 15](https://nextjs.org/)** - React framework with App Router
 - **[React 18](https://reactjs.org/)** - UI library with Server & Client Components
+- **[FastAPI](https://fastapi.tiangolo.com/)** - API crafting Web framework
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-safe JavaScript
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
 

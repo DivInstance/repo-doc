@@ -30,14 +30,15 @@ jobs:
         with:
           node-version: "24"   
 
-      - name: Install npm dependencies
-        run: npm install
+      - name: Install yarn (previously npm) dependencies
+        run: yarn install
 
       - name: Build dashboard
-        run: npm run build
+        run: yarn build
 
-      - name: Upload build as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dashboard-build
-          path: build/   
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.RENDER_API_KEY }}
+        
+        run: |
+          netlify deploy --dir=out --site=${{ secrets.NETLIFY_SITE_ID }} --prod
